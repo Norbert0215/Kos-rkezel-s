@@ -1,4 +1,3 @@
-
   const products = [
       {
       id: 1,
@@ -100,29 +99,34 @@ const makeBoxes = (data) =>{
   return content
 }
 
-const render = () => {
+
+const render = (data) => {
   const boxes = document.querySelector(".products"); 
-  boxes.innerHTML = "";   
-  boxes.innerHTML = makeBoxes(products).join("");
+  
+  boxes.innerHTML = data.join("");
 };
+
+ 
+const filter = () =>{
+  
+  const minPrice = document.querySelector("#min-price");
+  const maxPrice = document.querySelector("#max-price");
+  return products.filter(product => Number(product.price) >= Number(minPrice.value) && Number(product.price) <= Number(maxPrice.value));
+};
+
+
+const filterButtonManagement = ()=>{
+  const newProductsList = makeBoxes(filter());
+  render(newProductsList)
+}
+ 
 
 document.addEventListener("DOMContentLoaded", () =>{
-  render();
-});
+  const productList = makeBoxes(products)
+  render(productList);
 
-
-const filterButton = document.querySelector("#filter-btn")
+  const filterButton = document.querySelector("#filter-btn")
+  filterButton.addEventListener("click", filterButtonManagement());
   
- 
-  
-const filter = (minPrice,maxPrice, products) =>{
-  const minPrice = document.querySelector("#min-price").value;
-  const maxPrice = document.querySelector("#max-price").value;
-  return products.filter(product => product.price >= minPrice && product.price <= maxPrice);
-};
-
-filterButton.addEventListener("click", () => {
-  filter()
 });
-
 
