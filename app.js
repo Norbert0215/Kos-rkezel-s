@@ -1,4 +1,3 @@
-const cards = () =>{
 
   const products = [
       {
@@ -87,20 +86,24 @@ const cards = () =>{
       }
 
   ];
+ 
 
-  const content = products.map( ({price,id,name,description,picture}) => 
-      `<div id="${id}" class="product-card">
-      <img src="img/${picture}">
-      <h3>${name}</h3>
-      <p>${description}</p>
-      <p>Ár: ${price} Ft</p>
-      </div>` );
+const makeBoxes = (data) =>{
+  const content = data.map( ({price,id,name,description,picture}) => 
+    `<div id="${id}" class="product-card">
+    <img src="img/${picture}">
+    <h3>${name}</h3>
+    <p>${description}</p>
+    <p>Ár: ${price} Ft</p>
+    </div>` );
 
   return content
 }
+
 const render = () => {
-  const boxes = document.querySelector(".products");    
-  boxes.innerHTML = cards().join("");
+  const boxes = document.querySelector(".products"); 
+  boxes.innerHTML = "";   
+  boxes.innerHTML = makeBoxes(products).join("");
 };
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -109,19 +112,19 @@ document.addEventListener("DOMContentLoaded", () =>{
 });
 
 
-
 const filterButton = document.querySelector("#filter-btn")
+
   
- 
-  
-const filter = (minPrice,maxPrice, products) =>{
+const filter = () =>{
   const minPrice = document.querySelector("#min-price").value;
   const maxPrice = document.querySelector("#max-price").value;
   return products.filter(product => product.price >= minPrice && product.price <= maxPrice);
 };
 
 filterButton.addEventListener("click", () => {
+  render()
   filter()
+
 });
 
 
