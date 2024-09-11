@@ -88,10 +88,13 @@ const products = [
 
 
 
-const minInput = document.querySelector("#min-price")
-const maxInput = document.querySelector("#max-price")
 const filterButon = document.querySelector("#filter-btn")
 
-const filter = (minInput,maxInput,filterButon) =>{
-
-}
+const filter = (products,minPrice,maxPrice) =>{
+  const minPrice = document.querySelector("#min-price").value;
+  const maxPrice = document.querySelector("#max-price").value;
+  return products.filter(product => product.price >= minPrice && product.price <= maxPrice);
+};
+filterButon.addEventListener("click",()=>{
+  filter()
+})
