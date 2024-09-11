@@ -93,8 +93,8 @@ const products = [
   const filter = (minInput,maxInput,filterButon) =>{
     const minInput = document.querySelector("#min-price").value;
     const maxInput = document.querySelector("#max-price").value;
-
-  }
+    return products.filter(product => product.price >= minPrice && product.price <= maxPrice);
+  };
 
 
 
