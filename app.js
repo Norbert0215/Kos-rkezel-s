@@ -88,13 +88,18 @@ const products = [
 
 
 
-const filterButon = document.querySelector("#filter-btn")
+  const filterButton = document.querySelector("#filter-btn")
+  
+ 
+  
+  const filter = (minPrice,maxPrice, products) =>{
+    const minPrice = document.querySelector("#min-price").value;
+    const maxPrice = document.querySelector("#max-price").value;
+    return products.filter(product => product.price >= minPrice && product.price <= maxPrice);
+  };
 
-const filter = (products,minPrice,maxPrice) =>{
-  const minPrice = document.querySelector("#min-price").value;
-  const maxPrice = document.querySelector("#max-price").value;
-  return products.filter(product => product.price >= minPrice && product.price <= maxPrice);
-};
-filterButon.addEventListener("click",()=>{
-  filter()
-})
+  filterButton.addEventListener("click", () => {
+    filter()
+  });
+
+
