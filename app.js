@@ -88,3 +88,10 @@ const products = [
 
 
 
+const minInput = document.querySelector("#min-price")
+const maxInput = document.querySelector("#max-price")
+const filterButon = document.querySelector("#filter-btn")
+
+const filter = (minInput,maxInput,filterButon) =>{
+
+}
